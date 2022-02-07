@@ -1,0 +1,4 @@
+1) https://www.geeksforgeeks.org/minimize-the-maximum-difference-between-the-heights/
+
+Subarrays with equal 1s and 0s
+Subarray with given Sum-eff
