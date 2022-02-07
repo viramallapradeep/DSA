@@ -4,12 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NonRepeatingElement {
-	
-	  
 
-	public static void main(String[] args) {
-		
-		int	a[] = {-1, 3, -1, 2, 2};
+
+    public static void main(String[] args) {
+
+        int[] a = {-1, 3, -1, 2, 2};
 		
 		
 	/*	
@@ -27,30 +26,30 @@ public class NonRepeatingElement {
 					System.out.println(count+" === " + a[i]);
 				}
 		}*/
-		
-		
-		Map<Integer, Integer> hMap = new HashMap<>();
-		
-		for (int i = 0; i < a.length; i++) {
-			
-			if (hMap.containsKey(a[i])) {
-				int val = hMap.get(a[i]);
-				hMap.put(a[i], val+1);
-			}else {
-				hMap.put(a[i], 1);
-			}
-		}
-		
-		
-		for (Map.Entry<Integer, Integer> entry : hMap.entrySet()) {
-			
-			if (entry.getValue() == 1) {
-				
-				System.out.println("non-Rep "+ entry.getKey());
-			}
-			
-		}
 
-	}
+
+        Map<Integer, Integer> hMap = new HashMap<>();
+
+        for (int i = 0; i < a.length; i++) {
+
+            if (hMap.containsKey(a[i])) {
+                int val = hMap.get(a[i]);
+                hMap.put(a[i], val + 1);
+            } else {
+                hMap.put(a[i], 1);
+            }
+        }
+
+
+        for (Map.Entry<Integer, Integer> entry : hMap.entrySet()) {
+
+            if (entry.getValue() == 1) {
+
+                System.out.println("non-Rep " + entry.getKey());
+            }
+
+        }
+
+    }
 
 }

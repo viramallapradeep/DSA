@@ -2,255 +2,248 @@ package linkedlist;
 
 public class LinkedList {
 
-	public int size = 0;
+    public int size = 0;
 
-	public Node head = null;
+    public Node head = null;
 
-	public Node addAfterHead(int data) {
-		Node newNode = new Node(data);
+    public static void main(String[] args) {
 
-		if (head == null) {
-			head = newNode;
-		} else {
-			Node current = head;
-			while (current.getNextNode() != null) {
-				current = current.getNextNode();
-			}
-			current.setNextNode(newNode);
-		}
-		
-		size++;
-		
-		return newNode;
+        LinkedList list = new LinkedList();
 
-	}
+        list.addAfterHead(0);
+        list.addBeforeHead(-1);
+        list.addAfterHead(1);
+        list.addAfterHead(-2);
+        list.addBeforeHead(2);
+        list.addAfterHead(-3);
 
-	
-	public void deleteNodeWithKey(int data) {
+        list.print();
 
-		Node curent = head;
+        System.out.println("size == " + list.size);
 
-		if (curent != null && curent.getData() == data) {
-			head = curent.getNextNode();
-			size--;
-			return;
-		}
+        list.deleteNodeWithKey(0);
 
-		Node prev = null;
+        list.print();
+        System.out.println("size == " + list.size);
 
-		while (curent != null && curent.getData() != data) {
-			prev = curent;
-			curent = curent.getNextNode();
-		}
+        list.deleteNodeWithKey(-1);
 
-		if (curent == null) {
-			return;
-		}
+        list.print();
+        System.out.println("size == " + list.size);
 
-		prev.setNextNode(curent.getNextNode());
-		size--;
+        list.deleteNodeWithIndex(2);
 
-	}
+        list.print();
+        System.out.println("size == " + list.size);
 
-	public void deleteNodeWithIndex(int pos) {
+        list.deleteLinkedList();
 
-		Node curent = head;
+        list.print();
+        System.out.println("size == " + list.size);
 
-		if (pos == 0) {
-			head = curent.getNextNode();
-			size--;
-			return;
-		}
+        list.getSize();
 
-		Node prev = null;
+        list.addAfterHead(0);
+        list.addBeforeHead(-1);
+        list.addAfterHead(1);
+        list.addAfterHead(2);
+        list.addBeforeHead(-2);
+        list.addAfterHead(3);
 
-		int count = 0;
+        list.print();
+        System.out.println("size == " + list.size);
+        list.getSize();
 
-		while (curent != null) {
-			prev = curent;
-			curent = curent.getNextNode();
+        System.out.println("recursive size = " + list.getSizeByRecursion(list.head));
 
-			count++;
-			if (count == pos) {
-				break;
-			}
+        System.out.println(" recursive finding = " + list.findKeyWithRecursion(list.head, 24));
 
-		}
+        list.print();
 
-		if (curent == null) {
-			return;
-		}
+        System.out.println("nth node from list " + list.getNthNode(1));
+    }
 
-		prev.setNextNode(curent.getNextNode());
-		size--;
+    public Node addAfterHead(int data) {
+        Node newNode = new Node(data);
 
-	}
+        if (head == null) {
+            head = newNode;
+        } else {
+            Node current = head;
+            while (current.getNextNode() != null) {
+                current = current.getNextNode();
+            }
+            current.setNextNode(newNode);
+        }
 
-	public void addBeforeHead(int data) {
-		Node newNode = new Node(data);
+        size++;
 
-		if (head == null) {
-			head = newNode;
-		} else {
-			newNode.setNextNode(head);
-			head = newNode;
-		}
-		size++;
-	}
+        return newNode;
 
-	public void print() {
+    }
 
-		Node temp = head;
+    public void deleteNodeWithKey(int data) {
 
-		while (temp != null) {
-			System.out.print(temp + ",");
-			temp = temp.getNextNode();
-		}
-		System.out.println();
-	}
-	
-	public void print(Node node) {
+        Node curent = head;
 
-		Node temp = node;
+        if (curent != null && curent.getData() == data) {
+            head = curent.getNextNode();
+            size--;
+            return;
+        }
 
-		while (temp != null) {
-			System.out.print(temp + " ");
-			temp = temp.getNextNode();
-		}
-		System.out.println();
-	}
+        Node prev = null;
 
-	public void deleteLinkedList() {
+        while (curent != null && curent.getData() != data) {
+            prev = curent;
+            curent = curent.getNextNode();
+        }
 
-		head = null;
-		size = 0;
+        if (curent == null) {
+            return;
+        }
 
-	}
+        prev.setNextNode(curent.getNextNode());
+        size--;
 
-	public void getSize() {
+    }
 
-		Node current = head;
-		int count = 0;
+    public void deleteNodeWithIndex(int pos) {
 
-		while (current != null) {
-			count++;
-			current = current.getNextNode();
-		}
+        Node curent = head;
 
-		System.out.println("size from counting = " + count);
+        if (pos == 0) {
+            head = curent.getNextNode();
+            size--;
+            return;
+        }
 
-	}
+        Node prev = null;
 
-	public int getSizeByRecursion(Node node) {
+        int count = 0;
 
-		if (node == null) {
-			return 0;
-		}
-		return 1 + getSizeByRecursion(node.getNextNode());
-	}
+        while (curent != null) {
+            prev = curent;
+            curent = curent.getNextNode();
 
-	public boolean findKeyWithRecursion(Node node, int key) {
+            count++;
+            if (count == pos) {
+                break;
+            }
 
-		if (node == null) {
-			return false;
-		}
+        }
 
-		if (node != null && node.getData() == key) {
-			return true;
-		}
+        if (curent == null) {
+            return;
+        }
 
-		return findKeyWithRecursion(node.getNextNode(), key);
+        prev.setNextNode(curent.getNextNode());
+        size--;
 
-	}
+    }
 
-	
-	public Node getNthNode(int val) {
-		
-		Node current = head;
-		
-		int count = 0;
-		
-		while (current!=null) {
-			
-			if (val == count++) {
+    public void addBeforeHead(int data) {
+        Node newNode = new Node(data);
+
+        if (head == null) {
+            head = newNode;
+        } else {
+            newNode.setNextNode(head);
+            head = newNode;
+        }
+        size++;
+    }
+
+    public void print() {
+
+        Node temp = head;
+
+        while (temp != null) {
+            System.out.print(temp + ",");
+            temp = temp.getNextNode();
+        }
+        System.out.println();
+    }
+
+    public void print(Node node) {
+
+        Node temp = node;
+
+        while (temp != null) {
+            System.out.print(temp + " ");
+            temp = temp.getNextNode();
+        }
+        System.out.println();
+    }
+
+    public void deleteLinkedList() {
+
+        head = null;
+        size = 0;
+
+    }
+
+    public void getSize() {
+
+        Node current = head;
+        int count = 0;
+
+        while (current != null) {
+            count++;
+            current = current.getNextNode();
+        }
+
+        System.out.println("size from counting = " + count);
+
+    }
+
+    public int getSizeByRecursion(Node node) {
+
+        if (node == null) {
+            return 0;
+        }
+        return 1 + getSizeByRecursion(node.getNextNode());
+    }
+
+    public boolean findKeyWithRecursion(Node node, int key) {
+
+        if (node == null) {
+            return false;
+        }
+
+        if (node != null && node.getData() == key) {
+            return true;
+        }
+
+        return findKeyWithRecursion(node.getNextNode(), key);
+
+    }
+
+    public Node getNthNode(int val) {
+
+        Node current = head;
+
+        int count = 0;
+
+        while (current != null) {
+
+            if (val == count++) {
 //				System.out.println(current);
-				return current;
-			}
-			
-			current = current.getNextNode();
-			
-		}
-		
-		return null;
-		
-		
-	}
-	
-	
-	
-		public void loopNodeLL() {
-			
-			
-			
-		}
-	
-		
-		
-	public static void main(String[] args) {
+                return current;
+            }
 
-		LinkedList list = new LinkedList();
+            current = current.getNextNode();
 
-		list.addAfterHead(0);
-		list.addBeforeHead(-1);
-		list.addAfterHead(1);
-		list.addAfterHead(-2);
-		list.addBeforeHead(2);
-		list.addAfterHead(-3);
+        }
 
-		list.print();
+        return null;
 
-		System.out.println("size == " +list. size);
 
-		list.deleteNodeWithKey(0);
+    }
 
-		list.print();
-		System.out.println("size == " + list.size);
+    public void loopNodeLL() {
 
-		list.deleteNodeWithKey(-1);
 
-		list.print();
-		System.out.println("size == " + list.size);
-
-		list.deleteNodeWithIndex(2);
-
-		list.print();
-		System.out.println("size == " + list.size);
-
-		list.deleteLinkedList();
-
-		list.print();
-		System.out.println("size == " + list.size);
-
-		list.getSize();
-
-		list.addAfterHead(0);
-		list.addBeforeHead(-1);
-		list.addAfterHead(1);
-		list.addAfterHead(2);
-		list.addBeforeHead(-2);
-		list.addAfterHead(3);
-
-		list.print();
-		System.out.println("size == " + list.size);
-		list.getSize();
-
-		System.out.println("recursive size = " + list.getSizeByRecursion(list.head));
-
-		System.out.println(" recursive finding = " + list.findKeyWithRecursion(list.head, 24));
-		
-		list.print();
-		
-		System.out.println("nth node from list "+list.getNthNode(1));
-	}
+    }
 
 }

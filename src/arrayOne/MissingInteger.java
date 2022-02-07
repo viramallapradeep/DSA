@@ -1,8 +1,8 @@
 package arrayOne;
 
 public class MissingInteger {
-	
-	public static void main(String[] args) {
+
+    public static void main(String[] args) {
 		
 	/* case 1	
 	int	a[] = {1, 2, 4, 6, 3, 7, 5};
@@ -31,6 +31,6 @@ public class MissingInteger {
 		}
 		
 		System.out.println("missing number is "+ (aSum-sum));*/
-	}
+    }
 
 }

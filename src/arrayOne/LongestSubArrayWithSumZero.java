@@ -1,13 +1,11 @@
 package arrayOne;
 
 public class LongestSubArrayWithSumZero {
-	
-	
-		public static void main(String[] args) {
-		
-		
-		
-		
-	}
+
+
+    public static void main(String[] args) {
+
+
+    }
 }
 

@@ -3,8 +3,8 @@ package arrayOne;
 import java.util.Arrays;
 
 public class RotateArray {
-	
-	public static void main(String[] args) {
+
+    public static void main(String[] args) {
 		
 	/*	case 1
 		int a[] = { 1, 2, 3, 4, 5,6,7};
@@ -45,32 +45,32 @@ public class RotateArray {
 		}
 		
 		System.out.println(Arrays.toString(ar));*/
-		
-		int r = 7;
-		int a[] = { 1, 2, 3, 4, 5, 6, 7, 8};
-		
-		reverse(a,0,a.length-1);
-		System.out.println(Arrays.toString(a));
-		
-		reverse(a,0,r-1);
-		
-		System.out.println(Arrays.toString(a));
-		
-		reverse(a,r,a.length-1);
-		
-		System.out.println(Arrays.toString(a));
-		
-	}
-	
-	
-	public static void reverse(int[] a,int i,int j) {
-		
-		for (; i < j; i++,j--) {
-			int temp = a[i];
-			a[i] = a[j];
-			a[j] = temp;
-		}
-			
-	}
+
+        int r = 7;
+        int[] a = {1, 2, 3, 4, 5, 6, 7, 8};
+
+        reverse(a, 0, a.length - 1);
+        System.out.println(Arrays.toString(a));
+
+        reverse(a, 0, r - 1);
+
+        System.out.println(Arrays.toString(a));
+
+        reverse(a, r, a.length - 1);
+
+        System.out.println(Arrays.toString(a));
+
+    }
+
+
+    public static void reverse(int[] a, int i, int j) {
+
+        for (; i < j; i++, j--) {
+            int temp = a[i];
+            a[i] = a[j];
+            a[j] = temp;
+        }
+
+    }
 
 }
